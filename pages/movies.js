@@ -2,7 +2,7 @@ export default function movies({data}){
     return (
         <div>
             <div>
-                {data.Search.map( (m) => <div>{m.Title} --- {m.Year} --- {m.Poster}</div>)}
+                {data.Search.map( (m) => <div>{m.Title} --- {m.Year} --- {src=`${m.poster}`}</div>)}
             </div>                       
         </div>
     )
@@ -18,6 +18,7 @@ export async function getServerSideProps(context){
     }
 }
 
+
 async function fetcher(url) {
 
     const res = await fetch(`http://www.omdbapi.com/?apikey=9fa0923&s=bagdad`)
@@ -25,6 +26,4 @@ async function fetcher(url) {
     const json = await res.json()
 
     return json
-
 }
-
